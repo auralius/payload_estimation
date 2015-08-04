@@ -72,16 +72,21 @@ res = wn - wn_est;
 
 m_ls = p_ls(1);
 cm_ls = p_ls(2:4);
+
 % This is respect to joint origin
-I_ls = [p_ls(5),p_ls(6),p_ls(7);p_ls(6),p_ls(8),p_ls(9);p_ls(7),p_ls(9),p_ls(10)]; 
+I_ls = [p_ls(5), p_ls(6), p_ls(7);
+        p_ls(6), p_ls(8), p_ls(9);
+        p_ls(7), p_ls(9), p_ls(10)]; 
 
 % Find actual center of gravity and moment of inertia at center of mass
 m = m_ls;
 c = cm_ls/m_ls;
 % Convert to about the center of the body mass (see equ. 6)
-I = I_ls-m*((c.'*c)*eye(3)-(c*c.')); 
+I = I_ls-m * ((c.'*c) * eye(3) - (c*c.')); 
 
-if rank(A) < 10
+% When rank(A) < 10, calculated inertias are worthless, but mass and CoM 
+% might still be correct
+if rank(A) < 10 
     I = zeros(3,3);
     if rank(A) < 4 % Minimum rank to estimate mass and COM
         m = 0;
