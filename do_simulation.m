@@ -12,6 +12,7 @@ clc
 % Inertias = [Ixx Ixy Ixz; Ixy Iyy Iyz; Ixz Iyz Izz];
 Inertias = eye(3); % kg*m^2
 m = 0.765; % kg
+CoM = [0.058 -0.007 0]; % m
 
 %% Do the simulation
 sim_time = 50;
