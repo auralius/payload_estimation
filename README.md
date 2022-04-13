@@ -14,4 +14,4 @@ Check: "estimate_payload.m".
 **6-DOF rigid body (Simulink + Simmechanics):**  
 Check: "model_6_dof.slx".
 
-Web: auralius.bitbucket.org
+manurunga@yandex.com  
